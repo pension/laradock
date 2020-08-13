@@ -624,6 +624,7 @@ docker-compose up -d php-worker
 > Using Use Browsersync with Laravel Mix.
 
 1. Add the following settings to your `webpack.mix.js` file. Please refer to Browsersync [Options](https://browsersync.io/docs/options) page for more options.
+
 ```
 const mix = require('laravel-mix')
 
@@ -1225,7 +1226,19 @@ docker-compose restart elasticsearch
 ```
 
 
+<br>
+<a name="Use-MeiliSearch"></a>
+## Use MeiliSearch
 
+1 - Run the MeiliSearch Container (`meilisearch`) with the `docker-compose up` command. Example:
+
+```bash
+docker-compose up -d meilisearch
+```
+
+2 - Open your browser and visit the localhost on port **7700** at the following URL:  `http://localhost:7700`
+
+> The private API key is `masterkey`
 
 
 
@@ -2185,6 +2198,32 @@ YAML PHP extension allows you to easily parse and create YAML structured data. I
 4 - Re-build the container `docker-compose build php-fpm`<br>
 
 
+<br>
+<a name="Install-RDKAFKA-php"></a>
+## Install RDKAFKA extension in php-fpm
+
+1 - Open the `.env` file
+<br>
+2 - Search for the `PHP_FPM_INSTALL_RDKAFKA` argument under the PHP-FPM container
+<br>
+3 - Set it to `true`
+<br>
+4 - Re-build the container `docker-compose build php-fpm`<br>
+
+
+<br>
+<a name="Install-RDKAFKA-workspace"></a>
+## Install RDKAFKA extension in workspace
+
+This is needed for 'composer install' if your dependencies require Kafka.
+
+1 - Open the `.env` file
+<br>
+2 - Search for the `WORKSPACE_INSTALL_RDKAFKA` argument under the WORKSPACE container
+<br>
+3 - Set it to `true`
+<br>
+4 - Re-build the container `docker-compose build workspace`<br>
 
 
 <br>
