@@ -279,6 +279,10 @@ NGINX_PHP_UPSTREAM_CONTAINER=php-fpm
 NGINX_PHP_UPSTREAM_PORT=9000
 NGINX_SSL_PATH=./nginx/ssl/
 
+### ASPNETCORE ###########################################
+ASPNETCORE_APP_PATH=../koshaaru-api
+DOTNET_WATCH=true
+
 ### LARAVEL_HORIZON ################################################
 
 LARAVEL_HORIZON_INSTALL_BZ2=false

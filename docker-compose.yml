@@ -367,6 +367,50 @@ services:
       depends_on:
         - php-fpm
       networks:
+        frontend:
+          aliases:
+            - common-api.pension.test
+            - apps.pension.test
+            - auth.pension.test
+            - forms.pension.test
+            - investment.pension.test
+            - cloudnet.pension.test
+            - koshaaru-api.pension.test
+            - sop-api.pension.test
+            - utilities-api.pension.test
+            - pms.pension.test
+            - dms.pension.test
+        backend:
+          aliases:
+            - common-api.pension.test
+            - auth.pension.test
+            - forms.pension.test
+            - investment.pension.test
+            - cloudnet.pension.test
+            - apps.pension.test
+            - koshaaru-api.pension.test
+            - sop-api.pension.test
+            - utilities-api.pension.test
+            - pms.pension.test
+            - dms.pension.test
+
+### ASPNETCORE Server #########################################
+    aspnetcore:
+      build:
+        context: ./aspnetcore
+        args:
+          - ASPNETCORE_APP_PATH=${ASPNETCORE_APP_PATH}
+          - APP_CODE_PATH_HOST=${APP_CODE_PATH_HOST}
+          - DOTNET_WATCH=${DOTNET_WATCH}
+      environment:
+         - ASPNETCORE_ENVIRONMENT=Development
+         - ASPNETCORE_URLS=http://+:5000
+      volumes:
+        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+      ports:
+        - "5000:5000"
+        - "8081:80"
+      networks:
         - frontend
         - backend
 
