@@ -392,7 +392,7 @@ services:
     networks:
       frontend:
         aliases:
-          - common-api.pension.test
+          - common.pension.test
           - apps.pension.test
           - auth.pension.test
           - forms.pension.test
@@ -401,11 +401,15 @@ services:
           - koshaaru-api.pension.test
           - sop-api.pension.test
           - utilities-api.pension.test
+          - inventory-api.pension.test
           - pms.pension.test
           - dms.pension.test
+          - livechat.pension.test
+          - job_api.pension.test
+          - helpdesk-api.pension.test
       backend:
         aliases:
-          - common-api.pension.test
+          - common.pension.test
           - auth.pension.test
           - forms.pension.test
           - investment.pension.test
@@ -414,8 +418,12 @@ services:
           - koshaaru-api.pension.test
           - sop-api.pension.test
           - utilities-api.pension.test
+          - inventory-api.pension.test
           - pms.pension.test
           - dms.pension.test
+          - livechat.pension.test
+          - job_api.pension.test
+          - helpdesk-api.pension.test
 
   ### ASPNETCORE Server #########################################
   aspnetcore:
@@ -427,11 +435,11 @@ services:
         - DOTNET_WATCH=${DOTNET_WATCH}
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_URLS=http://+:5001
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
     ports:
-      - "5000:5000"
+      - "5001:5001"
       - "8081:80"
     networks:
       - frontend
